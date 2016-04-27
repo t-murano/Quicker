@@ -66,6 +66,9 @@ gulp.task('scss', () => {
 
 gulp.task('server', ['js', 'scss'], () => {
   browserSync.init({
+    server: {
+      baseDir: './public'
+    },
     logLevel: 'debug',
     logConnections: true,
     scrollProportionally: false
