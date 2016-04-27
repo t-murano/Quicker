@@ -2,6 +2,7 @@
 
 import gulp from 'gulp'
 import sass from 'gulp-sass'
+import jade from 'gulp-jade'
 import uglify from 'gulp-uglify'
 import concat from 'gulp-concat'
 import plumber from 'gulp-plumber'
@@ -15,6 +16,11 @@ const reload = browserSync.create()
 const dirs = {
   src: 'src',
   dest: 'public'
+}
+
+const jd = {
+  src: `${dirs.src}/jade/*.jade`,
+  dest: `${dirs.dest}`
 }
 
 const js = {
@@ -35,8 +41,16 @@ const onError = function (err) {
   this.emit('end')
 }
 
+// JADE
+gulp.task('jade-task', () => {
+  return gulp.src(jd.src)
+  .pipe(jade())
+  .pipe(gulp.dest(jd.dest))
+  .pipe(reload.stream())
+})
+
 // JS
-gulp.task('js', () => {
+gulp.task('js-task', () => {
   return gulp.src(js.src)
   .pipe(plumber({
     errorHandler: onError
@@ -48,7 +62,7 @@ gulp.task('js', () => {
 })
 
 // SCSS
-gulp.task('scss', () => {
+gulp.task('scss-task', () => {
   return gulp.src(scss.src)
   .pipe(plumber({
     errorHandler: onError
@@ -64,7 +78,7 @@ gulp.task('scss', () => {
   .pipe(reload.stream())
 })
 
-gulp.task('server', ['js', 'scss'], () => {
+gulp.task('server', ['jade-task', 'js-task', 'scss-task'], () => {
   browserSync.init({
     server: {
       baseDir: './public'
