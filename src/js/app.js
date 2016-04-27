@@ -91,7 +91,7 @@ $(function() {
   })
   
   // load and show all list
-  myDataRef.orderByKey().on('child_added', function (snapshot) {
+  myDataRef.orderByValue().on('child_added', function (snapshot) {
     $('.load').hide()
     var message = snapshot.val()
     displayChatMessage(message.name, message.text, message.time)
