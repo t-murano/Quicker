@@ -11,11 +11,12 @@ Realtime chat application with Firebase
 ## Getting started
 
 ```bash
+git clone https://github.com/jinmayamashita/simple-login-chat.git
 npm install && gulp
 ```
 
 ## Demo 
-You can also play with this [DEMO]()
+You can also play with this [DEMO](https://goheadauth.firebaseapp.com)
 
 ##License
 Simple chat application is released under the MIT License.
