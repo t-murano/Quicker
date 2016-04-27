@@ -1,9 +1,9 @@
 {
-  "name": "simple-login-chat-with-firebase",
+  "name": "simple-login-chat",
   "authors": [
     "jinmayamashita <jinmayamashita@gmail.com>"
   ],
-  "description": "Simple login chat using firebase",
+  "description": "Simple chat application with Twitter login",
   "main": "",
   "license": "MIT",
   "homepage": "",
