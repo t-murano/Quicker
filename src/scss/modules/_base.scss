@@ -1,0 +1,20 @@
+// default
+body {
+    font-family: $base-font;
+    margin: 2rem;
+    
+}
+button,
+input {
+    font-size: 16px;
+    margin: 1rem 0;
+}
+
+main {
+  /* Using plain CSS */
+  @media (min-width: 768px) {
+    margin: auto 20%;
+    min-width: 600px;
+    
+  }
+}

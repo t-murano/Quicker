@@ -1,5 +1,3 @@
-public/bower_components
-public/style.css
-public/script.js
+public
 node_modules
 .bower.json.swp

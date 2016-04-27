@@ -1,4 +1,147 @@
-body {
-  margin: 2rem;
-  font-family: menlo;
+// @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+@import 'modules/vars';
+@import 'modules/mixin';
+@import 'modules/base';
+
+
+// default
+html,body {
+  font-family: $base-font;
+    // margin: 2rem;
+    
+}
+
+button,
+input {
+    font-size: 16px;
+    margin: 1rem 0;
+}
+
+main {
+  /* Using plain CSS */
+  @media (min-width: 768px) {
+    margin: auto 20%;
+    min-width: 600px;
+    
+  }
+}
+
+// set
+header {
+    .logo {
+        @extend .title;
+        width: 80px;
+        height: 80px;
+    }
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .desc {
+        font-weight: 100;
+        @extend .title;
+        line-height: 0.1rem;
+    }
+    h1 {
+        font-weight: 600;
+        font-size: 2rem;
+        font-family: Helvetica, Sans-serif;
+        color: darkgrey;
+    }
+    #loginDiv {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+// main
+.list {
+    @extend .title;
+    margin-top: 3rem;
+}
+
+.msg {
+    // http://ios7colors.com/
+    @extend .util-shadow;
+    border-radius: 0.6rem;
+    background: white;
+    line-height: 2.8rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+    @include linearGradient($tw-color, #1D62F0);
+}
+button {
+    background: $tw-color;
+    border: 0;
+    color: white;
+    border-radius: 0.4rem;
+    padding: 0.6rem;
+}
+input {
+    outline: none;
+    border-radius: 0.4rem;
+}
+.msg-input {
+    display: flex;
+    margin-bottom: 3rem;
+}
+#messageInput {
+    height: 56px;
+    border: 0;
+    width: 80%;
+    color: #737373;
+    background: whitesmoke;
+    letter-spacing: 1px;
+    text-indent: 5%;
+    border-radius: 5px 0 0 5px;
+}
+#submit {
+    height: 58px;
+    border: 0;
+    width: 25%;
+    background: darkgrey;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    &:hover {
+        background: lightgrey;
+    }
+}
+.time {
+    padding-left: 1rem;
+    font-size: 12px;
+    display: box;
+    color: lightgrey;
+}
+.btn {
+    display: flex;
+}
+.load {
+  margin-bottom: 1000px;
+  display: flex;
+  justify-content: center;
+}
+.load-icon {
+  color: $tw-color;
+}
+
+footer {
+  margin-top: 3rem;
+  a {color: lightgrey; &:hover {color: #1F1F21;}}
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+  }
+  li {
+    padding-right: 1rem;
+  }
+  p { font-size: .8rem; }
 }

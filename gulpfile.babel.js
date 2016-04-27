@@ -87,8 +87,9 @@ gulp.task('server', ['jade-task', 'js-task', 'scss-task'], () => {
     logConnections: true,
     scrollProportionally: false
   })
-  gulp.watch(js.src, ['js'])
-  gulp.watch(scss.src, ['scss'])
+  gulp.watch(jd.src, ['jade-task'])
+  gulp.watch(js.src, ['js-task'])
+  gulp.watch(scss.src, ['scss-task'])
 })
 
 gulp.task('default', ['server'])
