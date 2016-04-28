@@ -18,6 +18,7 @@ $(function() {
       $('#login').hide()
       $('#logout').text('ログアウト').show()
       $('.list').show()
+      $('#messageInput').focus()
     } else {
       $('#logout').hide()
       $('#login').show()
@@ -34,6 +35,7 @@ $(function() {
         console.log('Login Failed!', error)
       } else {
         user.name = authData.twitter.username
+        user.picture = authData.twitter.profileImageURL
       }
     }, {
       remember: 'sessionOnly'
@@ -45,9 +47,11 @@ $(function() {
    **/
   function send () {
     var name = user.name
+    var picture = user.picture
     var text = $('#messageInput').val()
     var now = moment.now()
     myDataRef.push({
+      picture: picture,
       name: name,
       text: text,
       time: now
@@ -94,15 +98,40 @@ $(function() {
   myDataRef.orderByValue().on('child_added', function (snapshot) {
     $('.load').hide()
     var message = snapshot.val()
-    displayChatMessage(message.name, message.text, message.time)
+    displayChatMessage(message.name, message.picture, message.text, message.time)
+    // console.log(message.picture)
   })
 
-  function displayChatMessage (name, text, time) {
+  function displayChatMessage (name, picUrl, text, time) {
     var msgTime = moment(time).fromNow()
+    
+    // html elements
+    var imgEle = $('<img />', {
+      src: picUrl,
+      srcset: picUrl + ' 2x',
+      alt: name,
+      class: 'profile-pic'
+    })
+    var msgEle = $('<p />', {
+      text: text,
+      class: 'msg-box'
+    })
+    var usrLink = $('<a />', {
+      href: 'https://twitter.com/' + name
+    })
+    .append(imgEle)
+    // .append(userMetaEle)
+    
+    var userMetaEle = $('<div />', {
+      class: 'user-meta'
+    })
+    .append($('<span class="user"/>').text('@' + name))
+    .append($('<span class="time"/>').text(msgTime))
+    
     $('<div class="msg"/>')
-      // .text(text + ' || ' + msgTime)
-      .text(text).prepend($('<em/>').text('@' + name + ': '))
-      .append($('<span class="time"/>').text(msgTime))
+      .append(usrLink)
+      .append(userMetaEle)
+      .append(msgEle)
       .appendTo($('#messagesDiv'))
     $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight
   }

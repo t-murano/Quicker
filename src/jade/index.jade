@@ -21,15 +21,18 @@ html(lang='ja')
           i.fa.fa-twitter(aria-hidden='true')
           |     ログイン
         button#logout
+        
     main.list
+      #messagesDiv
       .left
         .msg-input
           input#messageInput(type='text', placeholder='メッセージを入力してください。')
-          input#submit.button(type='submit', value='送信')
+          button#submit
+            送信
+          //- input#submit.button(type='submit', value='送信')
       .right
         .load
           i.fa.fa-spinner.fa-spin.fa-3x.load-icon
-        #messagesDiv
     footer
       ul
         li

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+// @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 @import 'modules/vars';
 @import 'modules/mixin';
@@ -42,13 +42,14 @@ header {
     }
     .desc {
         font-weight: 100;
+        text-align: center;
         @extend .title;
-        line-height: 1rem;
+        line-height: 1.5rem;
     }
     h1 {
         font-weight: 600;
         font-size: 2rem;
-        font-family: Helvetica, Sans-serif;
+        font-family: $base-font;
         color: darkgrey;
     }
     #loginDiv {
@@ -115,10 +116,10 @@ input {
     }
 }
 .time {
-    padding-left: 1rem;
+    // padding-left: .8rem;
     font-size: 12px;
     display: box;
-    color: lightgrey;
+    color: #333;
 }
 .btn {
     display: flex;
@@ -144,4 +145,28 @@ footer {
     padding-right: 1rem;
   }
   p { font-size: .8rem; }
+}
+
+.profile-pic {
+  // padding-left: 2rem;
+  width: 30px;
+  height: 30px;
+}
+.user {
+  font-size: .8rem;
+  // padding-left: 2rem;
+  font-family: menlo;
+}
+.user-meta {
+  padding-left: .8rem;
+  display: inline-block;
+  color: #b9d3ee;
+  span {
+    display: block;
+    line-height: .9rem;
+  }
+}
+.msg-box {
+  max-width: 80%;
+  word-break: break-all;
 }
