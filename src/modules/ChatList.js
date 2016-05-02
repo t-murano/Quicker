@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import ChatMessage from './ChatMessage'
 
 export default class ChatList extends Component {
   render () {
     return (
-      <h2>ChatList</h2>
+      <ChatMessage />
     )
   }
 }
