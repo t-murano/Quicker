@@ -3,7 +3,10 @@ import React, { Component, PropTypes } from 'react'
 export default class ChatForm extends Component {
   constructor (props) {
     super(props)
-    this.state = { msg: '' }
+    this.state = {
+      msg: '',
+      user: 'userex'
+    }
   }
   _handleChange (e) {
     this.setState({
@@ -13,8 +16,9 @@ export default class ChatForm extends Component {
   _handleKeyPress (e) {
     if (e.key === 'Enter') {
       let msg = this.state.msg.trim()
+      let user = this.state.user
       this.props.onCommentSubmit({
-        msg: msg
+        msg: msg, user: user
       })
       this.setState({ msg: '' })
     }
@@ -24,6 +28,7 @@ export default class ChatForm extends Component {
       <div className='comment-form'>
         <input
           type='text'
+          autoFocus='true'
           placeholder='message here'
           onChange={this._handleChange.bind(this)}
           value={this.state.msg}

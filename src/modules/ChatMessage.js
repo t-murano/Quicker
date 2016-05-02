@@ -5,9 +5,7 @@ export default class ChatMessage extends Component {
     return (
       <div>
         <ul>
-          <li>test1</li>
-          <li>test2</li>
-          <li>test3</li>
+          <li>{this.props.msg}</li>
         </ul>
       </div>
     )

@@ -11,7 +11,6 @@ export default class Chat extends Component {
     super(props)
   }
   _handleMessageSubmit (msg) {
-    console.log(msg)
     base.post('chats', {
       data: this.props.chats.concat(
         [{ message: msg }]
@@ -26,7 +25,8 @@ export default class Chat extends Component {
   render () {
     return (
       <div>
-        <ChatList/>
+        <h1>ChatRoom</h1>
+        <ChatList messages={this.props.chats} />
         <ChatForm onCommentSubmit={this._handleMessageSubmit.bind(this)} />
       </div>
     )
