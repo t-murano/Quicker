@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import Chat from './Chat'
 
 export default class App extends Component {
   render () {
-    return (<h1>Taube</h1>)
+    return (<Chat />)
   }
 }
