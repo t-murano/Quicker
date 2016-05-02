@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import Rebase from 're-base'
+
 import ChatList from './ChatList'
 import ChatForm from './ChatForm'
+
+const base = Rebase.createClass('https://taube.firebaseio.com')
 
 export default class Chat extends Component {
   constructor (props) {
@@ -8,6 +12,16 @@ export default class Chat extends Component {
   }
   _handleMessageSubmit (msg) {
     console.log(msg)
+    base.post('chats', {
+      data: this.props.chats.concat(
+        [{ message: msg }]
+      ),
+      context: this,
+       // This 'then' method will run after the post has finished.
+      then: () => {
+        console.log('POSTED')
+      }
+    })
   }
   render () {
     return (
@@ -17,4 +31,8 @@ export default class Chat extends Component {
       </div>
     )
   }
+}
+
+Chat.propTypes = {
+  chats: PropTypes.array.isRequired
 }
