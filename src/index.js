@@ -1,8 +1,27 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './modules/App'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 
-render(
-  <App />,
-  document.getElementById('app')
-)
+import App from './modules/App'
+import Landing from './modules/Landing'
+import Home from './modules/Home'
+
+import auth from './modules/config/auth.js'
+
+function requireAuth(nextState, replace) {
+  if (!auth.loggedIn()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
+
+render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+    	<IndexRoute component={Landing} />
+      <Route path="home" component={Home} onEnter={requireAuth} />
+    </Route>
+  </Router>
+), document.getElementById('app'))

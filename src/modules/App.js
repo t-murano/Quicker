@@ -1,33 +1,35 @@
 import React, { Component } from 'react'
 import Rebase from 're-base'
-import Chat from './Chat'
+import auth from './config/auth'
+import Logout from './Logout'
 
 const base = Rebase.createClass('https://taube.firebaseio.com')
 
 export default class App extends Component {
-  constructor (props) {
-    super(props)
+	constructor (props) {
+ 		super(props)
     this.state = {
-      messages: []
+      loggedIn: auth.loggedIn(),
     }
   }
-  /**
-   * Mounting: Before rendering (no DOM yet)
-   * Invoked once, immediately before the initial rendering occurs.
-   */
-  componentWillMount () {
-    /*
-     * Here we call 'bindToState', which will update
-     * our local 'messages' state whenever our 'chats'
-     * Firebase endpoint changes.
-     */
-    base.bindToState('chats', {
-      context: this,
-      state: 'messages',
-      asArray: true
+  _updateAuth (loggedIn) {
+    this.setState({
+      loggedIn: !!loggedIn
     })
   }
+  componentWillMount() {
+    auth.onChange = this._updateAuth.bind(this)
+  }
+  _checkState () {
+    console.log(this.state)
+  }
   render () {
-    return (<Chat chats={ this.state.messages }/>)
+    return (
+      <div>
+        <button className='deb' onClick={this._checkState.bind(this)}>this.state()</button>
+        {this.state.loggedIn ? (<Logout />) : null }
+        {this.props.children}
+      </div>
+    )
   }
 }

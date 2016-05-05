@@ -2,18 +2,14 @@
 <html>
   <head>
     <meta charset=utf-8/>
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <title>Taube</title>
     <style>
-      /* Only dev start */
-      .for-dev {font-family: hack; background-color: black; color: deepskyblue;display:flex;justify-content: center;}
-      input {focus:none;border:0px;font-size: 2rem;font-weight:100;font-family:'Hiragino Sans',hack;background-color:white;padding:1rem;color:#333;border-radius: 10px;width:80vw;}
-      textarea:focus,input:focus{outline: none;}::-webkit-input-placeholder {color: lightgrey;}li{list-style: none;}
-      .comment-form{bottom: 2px;}.chat-list{overflow: auto; height:200px;}
-      /* Only dev end */
+      html,body{margin:0;font-family:hack;background-color:#000;color:#00bfff}input{color:#00bfff;background:#000;border:1px solid #00bfff;font-family:hack;font-size:1.2rem}button{background:#00bfff;border:1px solid #00bfff;font-family:hack;font-size:1.2rem;border:0;width:100vw;padding:0.8rem;}button:active{color:#00bfff;background:#000;}button:focus{outline:0}a{color:gold;}li{list-style:none;}.deb{background-color: tomato;color:white;font-size:.9rem;padding:.3rem;}
     </style>
   </head>
-  <body class="for-dev">
-    <div id=app></div>
+  <body>
+    <div id="app"></div>
     <script src="/app.js"></script>
   </body>
 </html>

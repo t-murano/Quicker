@@ -2,3 +2,10 @@ public
 node_modules
 .bower.json.swp
 memo.md
+src/modules/untitled
+src/modules/Home.js
+src/modules/Help.js
+src/modules/ChatMessage.js
+src/modules/ChatMessage.js
+src/modules/utils/auth.js
+npm-debug.log
