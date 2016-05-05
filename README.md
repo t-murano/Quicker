@@ -1,22 +1,18 @@
-# Simple chat application with Twitter login
-
-Realtime chat application with Firebase 
+# Taube
+Taube is a realtime chat application for developers with Firebase and Github login
 
 ## Used modules
-- [jQuery](https://jquery.com) 2.2.3
-- [Firebase](www.firebase.com) 2.4.2
-- [Gulp](gulpjs.com) 3.9.1
+- [React](https://jquery.com) 15.0.2
+- [re-base](www.firebase.com) 1.5.1
+- [webpack](https://webpack.github.io/) 1.13.0
 - [Moment.js](momentjs.com) 2.13.0
 
 ## Getting started
 
 ```bash
 git clone https://github.com/jinmayamashita/simple-login-chat.git
-npm install && gulp
+npm start
 ```
-
-## Demo 
-You can also play with this [DEMO](https://goheadauth.firebaseapp.com)
 
 ##License
 Simple chat application is released under the MIT License.
