@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { withRouter } from 'react-router'
 import { Router, Route, hashHistory, IndexRoute } from 'react-router'
 import auth from './config/auth.js'
 
@@ -18,9 +17,14 @@ export default class Logout extends Component {
     })
   }
   render () {
+    let user = this.props.user.displayName
+    let userIconUrl = this.props.user.profileImageURL
     return (
     	<div>
-       <button onClick={this._logout.bind(this)}>Github Logout</button>
+        <button onClick={this._logout.bind(this)}>
+        <img src={userIconUrl} className='user-profile menu-user-icon' />
+          {user} Logout
+        </button>
     	</div>
     	)
   }

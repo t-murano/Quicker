@@ -1,5 +1,5 @@
 import Rebase from 're-base'
-
+import user from './user.js'
 const base = Rebase.createClass('https://taube.firebaseio.com')
 
 export default {
@@ -13,13 +13,15 @@ export default {
 					// console.log("Authenticated successfully with payload:", authData)
 					this.onChange(true)
           if (cb) { cb(authData) }
+          user.set(authData.github)
 				}
 		})
   },
   logout (cb) {
   	base.unauth()
   	this.onChange(false)
-    cb()
+    user.unset()
+    if (cb) { cb() }
   },
   onChange() {}
 }
