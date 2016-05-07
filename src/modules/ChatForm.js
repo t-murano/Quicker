@@ -4,9 +4,11 @@ export default class ChatForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      msg: '',
-      user: 'userex'
+      msg: ''
     }
+  }
+  componentWillMount() {
+    console.log('[CharForm] called componentWillMount ()')
   }
   _handleChange (e) {
     this.setState({
@@ -16,9 +18,8 @@ export default class ChatForm extends Component {
   _handleKeyPress (e) {
     if (e.key === 'Enter') {
       let msg = this.state.msg.trim()
-      let user = this.state.user
       this.props.onCommentSubmit({
-        msg: msg, user: user
+        msg: msg
       })
       this.setState({ msg: '' })
     }

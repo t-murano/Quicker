@@ -2,17 +2,35 @@ import React, { Component, PropTypes } from 'react'
 import Rebase from 're-base'
 import ChatList from './ChatList'
 import ChatForm from './ChatForm'
+import ChatKill from './ChatKill'
 
 const base = Rebase.createClass('https://taube.firebaseio.com')
 
 export default class Chat extends Component {
 	constructor (props, context) {
     super(props)
+		this.state = {
+			chats: [],
+			roomName: ''
+    }
   }
+	componentDidMount () {
+		let roomKey = this.props.params.chatRoomKey
+    base.syncState(roomKey, {
+      context: this,
+      state: 'chats',
+      asArray: true
+    })
+  }
+	componentWillMount() {
+		console.log('[Chat] called componentWillMount ()')
+	}
 	_handleMessageSubmit (msg) {
-    base.post('IAd6ATt2xm23', {
-      data: this.props.chats.concat(
-        [{ message: msg }]
+		let roomKey = this.props.params.chatRoomKey
+    base.post(roomKey, {
+      data: this.state.chats.concat(
+				// @FIXME find to user data in parents
+        [{ message: msg, user: base.getAuth().github }]
       ),
       context: this,
        // This 'then' method will run after the post has finished.
@@ -22,17 +40,17 @@ export default class Chat extends Component {
     })
   }
 	render () {
+		// @FIXME params -> if params, roomKey not eq then ?
     return (
       <div>
-        <ChatList messages={this.props.chats} />
+			<h1>ChatRoomName</h1>
+				<ChatKill roomKey={this.props.params.chatRoomKey}/>
+        <ChatList messages={this.state.chats} />
         <ChatForm onCommentSubmit={this._handleMessageSubmit.bind(this)} />
       </div>
     )
   }
  }
-Chat.propTypes = {
-  chats: PropTypes.array.isRequired
-}
 Chat.contextTypes = {
   router: React.PropTypes.object.isRequired
 }

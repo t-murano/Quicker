@@ -1,18 +1,27 @@
 import React, { Component } from 'react'
-// import ChatNew from './ChatNew'
+import classNames from 'classnames'
+
+import ChatNew from './ChatNew'
+import ChatJoin from './ChatJoin'
+import Logout from './Logout'
 
 export default class HomeSidebar extends Component {
-  _handleAction () {
-    console.log('Created room')
+  constructor(props) {
+    super(props)
   }
+  // makeNewChat
   render () {
+    var sidebarClass = classNames({
+      'sideClosed': true,
+      'sideOpend': this.props.isToggled
+    })
     return (
       <div className='side-bar'>
-        <nav>
+        <nav className={sidebarClass}>
           <ul>
-            <li onClick={this._handleAction.bind(this)}>▶︎ createNewChat</li>
-            <li>▶︎ joinChat</li>
-            <li>▶︎ userSetting</li>
+            <li><Logout user={this.props.user} /></li>
+            <li><ChatNew roomCreated={this.props.roomCreated} /></li>
+            <li className='join'><ChatJoin /></li>
           </ul>
         </nav>
       </div>

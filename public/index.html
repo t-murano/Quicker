@@ -5,7 +5,32 @@
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <title>Taube</title>
     <style>
-      html,body{margin:0;font-family:hack;background-color:#000;color:#00bfff}input{width:100%;color:#00bfff;background:#000;border:1px solid #00bfff;font-family:hack;font-size:1.1rem}button{background:#00bfff;border:1px solid #00bfff;font-family:hack;font-size:1.2rem;border:0;width:100%;padding:.8rem}button:active{color:#00bfff;background:#000}button:focus{outline:0}a{color:#00bfff}a:hover{color:#fa225d}li{list-style:none}.deb{background-color:#ff6347;color:#fff;font-size:.9rem;padding:.3rem}.side-bar{border:1px solid #00bfff;float:left;background:#000;padding:20px;margin:0 20px 20px 0;width:200px;height:100vh;cursor:pointer}.side-bar li{color:#00bfff;line-height:3rem}.content{padding:20px 20px 20px 300px}a{text-decoration:none}hr{border: 0;height: 1px;background: #00bfff;background-image: linear-gradient(to right, #000, #00bfff, #000);}
+      html,body{color:#333;margin:0;padding:0;font-family:hack;}button{margin-top:3rem;margin-bottom:3rem;background:#fff;border:1px solid #00bfff;font-family:hack;font-size:.9rem;padding:.8rem}button:active{color:#fff;background:#00bfff}button:focus{outline:0}input{margin-bottom:3rem;color:#1abc9c;background:#fff;border:1px solid #eee;font-size:3rem; font-family:monospace;}
+      .deb{color: #eee;border: 1px solid #eee;width: 100vw;font-size: 0.7rem;padding: 3px;margin-top:0;margin-bottom:0;}
+      header{border: 1px solid #00bfff;display: flex;justify-content: space-around;}header button{margin-top: 10px;margin-bottom: 10px;}
+      .menu-icon{font-size: 1.4rem;}
+      .side-bar ul,li{margin: 0;padding: 0;}
+      .side-bar li{list-style:none;}.side-bar button{width: 100%; margin-top: 2px;margin-bottom: 2px; display: flex; justify-content: space-between;}
+      .side-bar li:nth-child(odd) button {border: 1px solid #ffa500;}
+      .side-bar li:nth-child(even) button {border: 1px solid #87c6c3;}
+      .create{background-color: #f6ef28; color:#333}
+      .join{background-color: #b7c097; color:#333}
+      .sideClosed{display: none;}.sideOpend{display: block;}
+      .skylight-wrapper input {font-size: 1.3rem;width:100%;font-family: menlo;color:#000;}
+      fieldset{display: flex;}
+      small{color:#a599a7;font-size:.9rem;display:block;}
+      main{margin:1.8rem;height:100vh;display:flex;justify-content:center;color:#494650;}
+      .user-profile{width: 100px;height: 100px;border: 1px solid #eee;}
+      .menu-user-icon{width: 20px;height: 20px;}
+      .chat-user-icon{width: 30px;height: 30px;}
+      li {list-style: none;}
+      .msg{position: relative;border: 1px solid #eee; border-radius: 18px;background-color: #eee; padding: .9rem; font-size: 0.9rem;font-weight: 100;color: #333;}
+      .chat-user{padding-top: .5rem;display: flex;flex-direction: row;justify-content: flex-end;}
+      .chat-user small{padding-top: 8px;padding-left: 10px;}
+      /*.arrow_ http://www.cssarrowplease.com/ */
+      .msg:after,.msg:before{left:90%;top:100%;right:50%;border:solid transparent;content:" ";height:0;width:0;position:absolute;pointer-events:none}.msg:after{border-left-color:#eee;border-width:10px;margin-top:-10px}.msg:before{border-top-color:#eee;border-width:10px;margin-left:-10px}
+      /*.autofocus */
+      .chat-list{overflow: auto; height:600px;}
     </style>
   </head>
   <body>
