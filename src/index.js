@@ -5,6 +5,9 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import App from './modules/App'
 import Landing from './modules/Landing'
 import Home from './modules/Home'
+import HomeSidebar from './modules/HomeSidebar'
+import HomeContent from './modules/HomeContent'
+import Chat from './modules/Chat'
 
 import auth from './modules/config/auth.js'
 
@@ -21,7 +24,20 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
     	<IndexRoute component={Landing} />
-      <Route path="home" component={Home} onEnter={requireAuth} />
+      <Route path="home" component={Home} onEnter={requireAuth}>
+        <Route path=":chatRoomKey" components={{ content: Chat }} />
+      </Route>
     </Route>
   </Router>
 ), document.getElementById('app'))
+
+// render((
+//   <Router history={browserHistory}>
+//     <Route path="/" component={App}>
+//     	<IndexRoute component={Landing} />
+//       <Route path="home" component={Home} onEnter={requireAuth}>
+//         <Route path=":menu" components={{ content: HomeContent, sidebar: HomeSidebar}}></Route>
+//       </Route>
+//     </Route>
+//   </Router>
+// ), document.getElementById('app'))
