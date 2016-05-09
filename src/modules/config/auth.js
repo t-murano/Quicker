@@ -20,7 +20,8 @@ export default {
   logout (cb) {
   	base.unauth()
   	this.onChange(false)
-    user.unset()
+    // user.unset()
+    user.leave()
     if (cb) { cb() }
   },
   onChange() {}
