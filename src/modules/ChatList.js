@@ -31,7 +31,7 @@ export default class ChatList extends Component {
   render () {
     // make map
     const Messages = this.props.messages.map(obj => (
-      <ChatMessage key={obj.key} user={obj.user} msg={obj.message.msg} />
+      <ChatMessage key={obj.key} user={obj.user} msg={obj.message.msg} time={obj.message.time} />
     ))
     return (
       <div

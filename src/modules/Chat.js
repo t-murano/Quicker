@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Rebase from 're-base'
+import moment from 'moment'
 import ChatList from './ChatList'
 import ChatForm from './ChatForm'
 import ChatKill from './ChatKill'
@@ -27,6 +28,7 @@ export default class Chat extends Component {
 	}
 	_handleMessageSubmit (msg) {
 		let roomKey = this.props.params.chatRoomKey
+    // let time = moment().format('h:mm a')
     base.post(roomKey, {
       data: this.state.chats.concat(
 				// @FIXME find to user data in parents

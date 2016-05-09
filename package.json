@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "moment": "^2.13.0",
     "re-base": "^1.5.1",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
