@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import room from './config/room.js'
-import Logo from './Logo'
+// import Logo from './Logo'
 
 export default class HomeHeader extends Component {
   constructor (props) {
