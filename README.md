@@ -1,5 +1,5 @@
-# Taube
-Taube is a realtime chat application for developers with Firebase and Github login
+# Quicker
+Quicker is a realtime group chat application for casual users
 
 ## Used modules
 - [React](https://jquery.com) 15.0.2
@@ -15,4 +15,4 @@ npm start
 ```
 
 ##License
-Simple chat application is released under the MIT License.
+Quicker is released under the MIT License.
