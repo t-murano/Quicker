@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import moment from 'moment'
 
 export default class ChatForm extends Component {
   constructor (props) {
@@ -16,10 +17,12 @@ export default class ChatForm extends Component {
     })
   }
   _handleKeyPress (e) {
+    let time = moment().format('h:mm a')
     if (e.key === 'Enter') {
       let msg = this.state.msg.trim()
       this.props.onCommentSubmit({
-        msg: msg
+        msg: msg,
+        time: time
       })
       this.setState({ msg: '' })
     }
