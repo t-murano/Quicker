@@ -1,5 +1,5 @@
 export default {
-  onChange() {},
+  onChange () {},
   setRoom (room) {
     this.onChange(room.token)
   }

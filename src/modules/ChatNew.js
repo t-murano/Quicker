@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import SkyLight from 'react-skylight'
 
 import room from './config/room'
@@ -13,14 +13,16 @@ export default class ChatNew extends Component {
       time: 30
     }
   }
-  componentWillMount() {
+
+  componentWillMount () {
     console.log('[ChatNew] called componentWillMount ()')
     let token = Math.random().toString(36).substring(7)
     this.setState({
-      token : token,
+      token: token,
       time: 30
     })
   }
+
   componentDidUpdate () {
     console.log('[ChatNew] called componentDidUpdate ()')
   }
@@ -34,18 +36,21 @@ export default class ChatNew extends Component {
     //   time : newDateObj.setTime(now.getTime() + (this.state.time * 60 * 1000))
     // })
     console.log(this.state)
+
     if (this.state.name.length === 0) {
-      alert('chat room name was null!');
+      console.log('chat room name was null!')
       return
     }
     room.setRoom(this.state)
     this.refs.simpleDialog.hide()
   }
-  _executeAfterModalClose() {
-    console.log('Modal: ',this.state)
-    if(!this.state.name) {
+
+  _executeAfterModalClose () {
+    console.log('Modal: ', this.state)
+    if (!this.state.name) {
       return
     }
+
     this.props.roomCreated(this.state.token)
     user.enter()
     this.context.router.replace(`/home/${this.state.token}`)
@@ -56,10 +61,11 @@ export default class ChatNew extends Component {
     nextState[e.target.name] = e.target.value
     this.setState({
       name: nextState.name,
-      time: nextState.time ? parseInt(nextState.time) : 30
+      // http://stackoverflow.com/questions/7818903/jslint-says-missing-radix-parameter-what-should-i-do
+      time: nextState.time ? parseInt((nextState.time), 10) : 30
     })
-
   }
+
   render () {
     return (
       <div>
@@ -68,11 +74,11 @@ export default class ChatNew extends Component {
           ref='simpleDialog'
           afterClose={this._executeAfterModalClose.bind(this)}
           title='CREATE CHATROOM'>
-            <label for='chatGroupName'>name</label>
+            <label htmlFor='chatGroupName'>name</label>
             <input name='name' onChange={this._handleChange.bind(this)} id='chatGroupName' type='text' placeholder='blankRoom' autoFocus />
-            <label for='chatGroupPass'>roomKey</label>
+            <label htmlFor='chatGroupPass'>roomKey</label>
             <input id='chatGroupPass' type='text' value={this.state.token} disabled />
-            <label for='chatTime'>chatTime </label>
+            <label htmlFor='chatTime'>chatTime </label>
             <select name='time' defaultValue={this.state.time} onChange={this._handleChange.bind(this)} id='chatTime'>
               <option value='30'>30min</option>
               <option value='60'>1hr</option>
@@ -84,6 +90,11 @@ export default class ChatNew extends Component {
     )
   }
 }
+
+ChatNew.propTypes = {
+  roomCreated: PropTypes.func.isRequired
+}
+
 ChatNew.contextTypes = {
   router: React.PropTypes.object.isRequired
 }

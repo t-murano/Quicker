@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import Rebase from 're-base'
+import React, { Component, PropTypes } from 'react'
+// import Rebase from 're-base'
 
 import HomeHeader from './HomeHeader'
 import HomeSidebar from './HomeSidebar'
 import HomeContent from './HomeContent'
 
-const base = Rebase.createClass('https://taube.firebaseio.com')
+// const base = Rebase.createClass('https://taube.firebaseio.com')
 
 export default class Home extends Component {
   constructor (props) {
@@ -18,28 +18,28 @@ export default class Home extends Component {
    * Mounting: Before rendering (no DOM yet)
    * Invoked once, immediately before the initial rendering occurs.
    */
-  componentWillMount() {
+  componentWillMount () {
     console.log('[Home] called componentWillMount ()')
-   }
-   /**
-    * for toggle sidebar like a jQuery
-    */
-   _sideBarToggle () {
-     let toggled = !this.state.toggled
-     this.setState({
-       toggled : toggled
-     })
-   }
-   /**
-    * recived from child
-    */
-   _watcheCreatedRoom (roomkey) {
-     console.log('created ', roomkey)
-   }
+  }
+  /**
+   * for toggle sidebar like a jQuery
+   */
+  _sideBarToggle () {
+    let toggled = !this.state.toggled
+    this.setState({
+      toggled: toggled
+    })
+  }
+  /**
+   * recived from child
+   */
+  _watcheCreatedRoom (roomkey) {
+    console.log('created ', roomkey)
+  }
 
-   render () {
-     const { content } = this.props
-     return (
+  render () {
+    const { content } = this.props
+    return (
        <div>
          <HomeHeader
           roomName={this.props.getRoom}
@@ -51,7 +51,14 @@ export default class Home extends Component {
          <main>
            { content || <HomeContent user={this.props.getUser()} /> }
          </main>
-       </div>
-     )
-   }
+       </div>)
+  }
+}
+// @FIXME
+// Failed propType: Required prop `content` was not specified in `Home`.
+// Check the render method of `RouterContext`.
+Home.propTypes = {
+  // content: PropTypes.object.isRequired,
+  // getRoom: PropTypes.string.isRequired,
+  // getUser: PropTypes.func.isRequired
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Rebase from 're-base'
 
 const base = Rebase.createClass('https://taube.firebaseio.com')
@@ -7,11 +7,13 @@ export default class ChatKill extends Component {
   constructor (props, context) {
     super(props)
     this.state = {
-			chats: []
+      chats: []
     }
   }
+
   _handleClick (e) {
     let roomKey = this.props.roomKey
+
     base.post(roomKey, {
       data: this.state.chats,
       context: this,
@@ -31,6 +33,10 @@ export default class ChatKill extends Component {
       </div>
     )
   }
+}
+
+ChatKill.propTypes = {
+  roomKey: PropTypes.string.isRequired
 }
 
 ChatKill.contextTypes = {

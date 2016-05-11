@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class HomeContent extends Component {
   constructor (props) {
@@ -16,4 +16,9 @@ export default class HomeContent extends Component {
       </div>
     )
   }
+}
+
+HomeContent.propTypes = {
+  user: PropTypes.object.isRequired
+  // userIconUrl: PropTypes.string.isRequired
 }

@@ -8,14 +8,17 @@ export default class ChatForm extends Component {
       msg: ''
     }
   }
-  componentWillMount() {
+
+  componentWillMount () {
     console.log('[CharForm] called componentWillMount ()')
   }
+
   _handleChange (e) {
     this.setState({
       msg: e.target.value
     })
   }
+
   _handleKeyPress (e) {
     let time = moment().format('h:mm a')
     if (e.key === 'Enter') {
@@ -27,6 +30,7 @@ export default class ChatForm extends Component {
       this.setState({ msg: '' })
     }
   }
+
   render () {
     return (
       <div className='comment-form'>

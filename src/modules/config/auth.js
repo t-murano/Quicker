@@ -4,24 +4,25 @@ const base = Rebase.createClass('https://taube.firebaseio.com')
 
 export default {
   loggedIn () {
-  	return !!base.getAuth()
+    return !!base.getAuth()
   },
   login (cb) {
-		base.authWithOAuthPopup('github', (err, authData) => {
-			if (err) { console.log("Login Failed!", err) }
-				else {
-					// console.log("Authenticated successfully with payload:", authData)
-					this.onChange(true)
-          if (cb) { cb(authData) }
-          user.set(authData.github)
-				}
-		})
+    base.authWithOAuthPopup('github', (err, authData) => {
+      if (err) {
+        console.log('Login Failed!', err)
+      } else {
+        // console.log("Authenticated successfully with payload:", authData)
+        this.onChange(true)
+        if (cb) { cb(authData) }
+        user.set(authData.github)
+      }
+    })
   },
   logout (cb) {
-  	base.unauth()
-  	this.onChange(false)
+    base.unauth()
+    this.onChange(false)
     user.unset()
     if (cb) { cb() }
   },
-  onChange() {}
+  onChange () {}
 }

@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import room from './config/room.js'
+import React, { Component, PropTypes } from 'react'
+// import room from './config/room.js'
 // import Logo from './Logo'
 
 export default class HomeHeader extends Component {
   constructor (props) {
     super(props)
   }
+
   _handleMenuClick () {
     this.props.toggleSideBar()
   }
@@ -22,4 +23,8 @@ export default class HomeHeader extends Component {
       </div>
     )
   }
+}
+
+HomeHeader.propTypes = {
+  toggleSideBar: PropTypes.func.isRequired
 }

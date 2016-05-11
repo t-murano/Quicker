@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Rebase from 're-base'
-import moment from 'moment'
+// import moment from 'moment'
 import ChatList from './ChatList'
 import ChatForm from './ChatForm'
 import ChatKill from './ChatKill'
@@ -8,27 +8,30 @@ import ChatKill from './ChatKill'
 const base = Rebase.createClass('https://taube.firebaseio.com')
 
 export default class Chat extends Component {
-	constructor (props, context) {
+  constructor (props, context) {
     super(props)
-		this.state = {
-			chats: [],
-			roomName: ''
+    this.state = {
+      chats: [],
+      roomName: ''
     }
   }
-	componentDidMount () {
-		let roomKey = this.props.params.chatRoomKey
+
+  componentDidMount () {
+    let roomKey = this.props.params.chatRoomKey
+
     base.syncState(roomKey, {
       context: this,
       state: 'chats',
       asArray: true
     })
   }
-	componentWillMount() {
-		console.log('[Chat] called componentWillMount ()')
-	}
-	_handleMessageSubmit (msg) {
-		let roomKey = this.props.params.chatRoomKey
-    // let time = moment().format('h:mm a')
+
+  componentWillMount () {
+    console.log('[Chat] called componentWillMount ()')
+  }
+
+  _handleMessageSubmit (msg) {
+    let roomKey = this.props.params.chatRoomKey
     base.post(roomKey, {
       data: this.state.chats.concat(
 				// @FIXME find to user data in parents
@@ -41,7 +44,8 @@ export default class Chat extends Component {
       }
     })
   }
-	render () {
+
+  render () {
 		// @FIXME params -> if params, roomKey not eq then ?
     return (
       <div>
@@ -53,6 +57,11 @@ export default class Chat extends Component {
     )
   }
  }
+
+Chat.propTypes = {
+  params: PropTypes.object.isRequired
+}
+
 Chat.contextTypes = {
   router: React.PropTypes.object.isRequired
 }

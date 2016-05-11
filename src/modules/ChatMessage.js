@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class ChatMessage extends Component {
   render () {
@@ -19,4 +19,10 @@ export default class ChatMessage extends Component {
       </div>
     )
   }
+}
+
+ChatMessage.propTypes = {
+  msg: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  time: PropTypes.string.isRequired
 }
