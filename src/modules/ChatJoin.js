@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import SkyLight from 'react-skylight'
-
-import room from './config/room'
 import user from './config/user'
 
 export default class ChatJoin extends Component {
@@ -20,12 +18,11 @@ export default class ChatJoin extends Component {
   }
 
   _handleSubmit () {
-    room.setRoom(this.state)
     this.refs.simpleDialog.hide()
   }
 
   _executeAfterModalClose () {
-    user.enter()
+    user.enterGroupMessages()
     this.context.router.replace(`/home/${this.state.token}`)
   }
 

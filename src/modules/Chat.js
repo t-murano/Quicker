@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import Rebase from 're-base'
-// import moment from 'moment'
+
 import ChatList from './ChatList'
 import ChatForm from './ChatForm'
 import ChatKill from './ChatKill'
 
-const base = Rebase.createClass('https://taube.firebaseio.com')
+import auth from './config/auth'
+
+const base = Rebase.createClass('https://quicker-dev.firebaseio.com')
 
 export default class Chat extends Component {
   constructor (props, context) {
@@ -17,7 +19,9 @@ export default class Chat extends Component {
   }
 
   componentDidMount () {
-    let roomKey = this.props.params.chatRoomKey
+
+    let roomKey = this.props.params.groupUrl
+    console.log('ROOMKEY', roomKey)
 
     base.syncState(roomKey, {
       context: this,
@@ -31,16 +35,17 @@ export default class Chat extends Component {
   }
 
   _handleMessageSubmit (msg) {
-    let roomKey = this.props.params.chatRoomKey
-    base.post(roomKey, {
+    let room = this.props.params.groupUrl
+    let user = auth.getUser()
+    base.post(room, {
       data: this.state.chats.concat(
-				// @FIXME find to user data in parents
-        [{ message: msg, user: base.getAuth().github }]
+        [
+          { message: msg, user: user }
+        ]
       ),
       context: this,
-       // This 'then' method will run after the post has finished.
       then: () => {
-        console.log('POSTED')
+        console.log('POSTED ONE!')
       }
     })
   }
@@ -50,7 +55,7 @@ export default class Chat extends Component {
     return (
       <div>
 			<h1>ChatRoomName</h1>
-				<ChatKill roomKey={this.props.params.chatRoomKey}/>
+				<ChatKill roomKey={this.props.params.groupUrl}/>
         <ChatList messages={this.state.chats} />
         <ChatForm onCommentSubmit={this._handleMessageSubmit.bind(this)} />
       </div>

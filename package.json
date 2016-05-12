@@ -25,5 +25,11 @@
     "react-dom": "^15.0.2",
     "react-router": "^2.4.0",
     "react-skylight": "^0.4.0"
+  },
+  "standard": {
+    "globals": [
+      "localStorage",
+      "sessionStorage"
+    ]
   }
 }

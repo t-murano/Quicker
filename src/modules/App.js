@@ -2,40 +2,38 @@ import React, { Component, PropTypes } from 'react'
 import Rebase from 're-base'
 
 import auth from './config/auth'
-import room from './config/room'
 import user from './config/user'
 
-// import Logout from './Logout'
-// import Chat from './Chat'
-
-const base = Rebase.createClass('https://taube.firebaseio.com')
+const base = Rebase.createClass('https://quicker-dev.firebaseio.com')
 
 export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       loggedIn: auth.loggedIn(),
+      user: {},
       messages: [],
-      isRoom: false,
-      thisRoom: ''
+      isRoom: false
     }
   }
-	/**
+
+  _updateAuth (loggedIn, user) {
+    this.setState({
+      loggedIn: !!loggedIn,
+      user: user
+    })
+  }
+
+  /**
    * Mounting: Before rendering (no DOM yet)
    * Invoked once, immediately before the initial rendering occurs.
    */
    componentWillMount () {
-     console.log('[App] called componentWillMount ()')
+     console.log('[App.js] called componentWillMount ()')
      auth.onChange = this._updateAuth.bind(this)
-     room.onChange = this._updateRoom.bind(this)
      user.onChange = this._updateUser.bind(this)
+     auth.login() // @NOTE: this is key
    }
-
-  _updateAuth (loggedIn) {
-    this.setState({
-      loggedIn: !!loggedIn
-    })
-  }
 
   _updateUser (isRoom) {
     this.setState({
@@ -54,44 +52,37 @@ export default class App extends Component {
       state: 'messages',
       asArray: true
     })
-    this.setState({
-      thisRoom: room ? room : null
-    })
+    // this.setState({
+    //   thisRoom: room ? room : null
+    // })
   }
 
+  /**
+   * Warning! infinity loop
+   */
   componentDidUpdate () {
-    console.log('[App] called componentDidUpdate ()')
+    console.log('[App.js] called componentDidUpdate ()')
   }
 
-  _checkState () {
-    console.log(this.state)
-  }
-
-  _passingUser () {
-    return base.getAuth().github
-  }
-
-  _paddingMessages () {
-    return this.state.messages
-  }
-
-  _paddingRoomToken () {
-    return this.state.thisRoom
+  /**
+   * only use deb
+   */
+  _debState () {
+    console.log('THIS.STATE', this.state)
+    console.log('LOCALSTORAGE', localStorage)
+    console.log('SESSIONSTORAGE', sessionStorage)
   }
 
   render () {
+    let debugState = { position: 'fixed', right: 0, color: 'gold', cursor: 'pointer', display: 'flex', fontFamily: 'menlo', justifyContent: 'flex-end' }
     return (
       <div>
-        <button className='deb'
-                onClick={this._checkState.bind(this)}>
-                App.js level => this.state()
-        </button>
-
+        <span style={debugState} onClick={this._debState.bind(this)}>*</span>
         { this.props.children &&
           React.cloneElement(this.props.children, {
             chats: this.state.messages,
-            getUser: this._passingUser.bind(this),
-            getRoom: this.state.thisRoom
+            user: this.state.user
+            // getRoom: this.state.currentRoom
           })
         }
       </div>

@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-// import room from './config/room.js'
-// import Logo from './Logo'
 
 export default class HomeHeader extends Component {
   constructor (props) {
@@ -15,10 +13,9 @@ export default class HomeHeader extends Component {
       <div>
         <header>
           <button className='menu-icon'
-                  onClick={this._handleMenuClick.bind(this)}>&#2393;
+                  onClick={this._handleMenuClick.bind(this)}>menu
           </button>
-          <h1>@taube<small>GroupMessages</small></h1>
-          <button className='menu-icon'>&#2869;</button>
+          <h1>Quicker<small>: GroupMessages</small></h1>
         </header>
       </div>
     )
