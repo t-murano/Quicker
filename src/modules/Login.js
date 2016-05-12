@@ -5,21 +5,23 @@ export default class Login extends Component {
   constructor (props, context) {
     super(props)
   }
-  // _login:
-  // login then go to main page
-  // @Read also:
-  // Identical to push except replaces the current history entry with a new one.
-  // https://github.com/reactjs/react-router/blob/master/docs/API.md#replacepathorloc
-  _login () {
-    auth.login(data => {
+  /**
+   * login
+   * Identical to push except replaces the current history entry with a new one.
+   *
+   * https://github.com/reactjs/react-router/blob/master/docs/API.md#replacepathorloc
+   */
+  _login (authType) {
+    auth.login(authType, data => {
       this.context.router.replace('/home')
-      console.log(data.github)
     })
   }
   render () {
     return (
       <div className='login'>
-        <button onClick={this._login.bind(this)}>Github Login</button>
+        <button onClick={this._login.bind(this, 'twitter')}>Login with Twitter account</button>
+        <button onClick={this._login.bind(this, 'facebook')}>Login with Facebook account</button>
+        <button onClick={this._login.bind(this, 'github')}>Login with Github account</button>
       </div>
     )
   }

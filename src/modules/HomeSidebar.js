@@ -38,6 +38,6 @@ export default class HomeSidebar extends Component {
 
 HomeSidebar.propTypes = {
   isToggled: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired,
+  // user: PropTypes.object.isRequired,
   roomCreated: PropTypes.func.isRequired
 }

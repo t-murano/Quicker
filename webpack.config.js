@@ -9,10 +9,6 @@ module.exports = {
     path: path.join(__dirname, 'public')
     // publicPath: "/public/"
   },
-  devServer: {
-    port: 8008
-    // contentBase: './public'
-  },
   module: {
     loaders: [
       {
@@ -22,5 +18,9 @@ module.exports = {
         include: path.join(__dirname, 'src')
       }
     ]
+  },
+  devServer: {
+    port: 8008
+    // contentBase: './public'
   }
 }

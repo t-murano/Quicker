@@ -1,26 +1,25 @@
-import React, { Component, PropTypes } from 'react'
-// import Rebase from 're-base'
+import React, { Component } from 'react'
 
 import HomeHeader from './HomeHeader'
 import HomeSidebar from './HomeSidebar'
 import HomeContent from './HomeContent'
 
-// const base = Rebase.createClass('https://taube.firebaseio.com')
-
 export default class Home extends Component {
-  constructor (props) {
+  constructor (props, context) {
     super(props)
     this.state = {
       toggled: false
     }
   }
+
   /**
    * Mounting: Before rendering (no DOM yet)
    * Invoked once, immediately before the initial rendering occurs.
    */
   componentWillMount () {
-    console.log('[Home] called componentWillMount ()')
+    console.log('[Home.js] called componentWillMount ()')
   }
+
   /**
    * for toggle sidebar like a jQuery
    */
@@ -30,6 +29,7 @@ export default class Home extends Component {
       toggled: toggled
     })
   }
+
   /**
    * recived from child
    */
@@ -46,10 +46,10 @@ export default class Home extends Component {
           toggleSideBar={this._sideBarToggle.bind(this)}/>
          <HomeSidebar
            isToggled={this.state.toggled}
-           user={this.props.getUser()}
+           user={this.props.user}
            roomCreated={this._watcheCreatedRoom.bind(this)}/>
          <main>
-           { content || <HomeContent user={this.props.getUser()} /> }
+           { content || <HomeContent user={this.props.user} /> }
          </main>
        </div>)
   }
@@ -58,7 +58,5 @@ export default class Home extends Component {
 // Failed propType: Required prop `content` was not specified in `Home`.
 // Check the render method of `RouterContext`.
 Home.propTypes = {
-  // content: PropTypes.object.isRequired,
-  // getRoom: PropTypes.string.isRequired,
-  // getUser: PropTypes.func.isRequired
+  // user: PropTypes.any.isRequired
 }

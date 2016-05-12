@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import SkyLight from 'react-skylight'
 
-import room from './config/room'
+// import room from './config/room'
 import user from './config/user'
 
 export default class ChatNew extends Component {
@@ -15,7 +15,7 @@ export default class ChatNew extends Component {
   }
 
   componentWillMount () {
-    console.log('[ChatNew] called componentWillMount ()')
+    console.log('[ChatNew.js] called componentWillMount ()')
     let token = Math.random().toString(36).substring(7)
     this.setState({
       token: token,
@@ -41,7 +41,7 @@ export default class ChatNew extends Component {
       console.log('chat room name was null!')
       return
     }
-    room.setRoom(this.state)
+    // room.setRoom(this.state)
     this.refs.simpleDialog.hide()
   }
 
@@ -52,7 +52,7 @@ export default class ChatNew extends Component {
     }
 
     this.props.roomCreated(this.state.token)
-    user.enter()
+    user.enterGroupMessages()
     this.context.router.replace(`/home/${this.state.token}`)
   }
 
@@ -91,9 +91,9 @@ export default class ChatNew extends Component {
   }
 }
 
-ChatNew.propTypes = {
-  roomCreated: PropTypes.func.isRequired
-}
+// ChatNew.propTypes = {
+//   roomCreated: PropTypes.func.isRequired
+// }
 
 ChatNew.contextTypes = {
   router: React.PropTypes.object.isRequired

@@ -10,8 +10,8 @@ export default class ChatMessage extends Component {
                <p>{this.props.msg}</p>
             </div>
             <div className='chat-user'>
-              <img src={this.props.user.profileImageURL} className='user-profile chat-user-icon' />
-              <small>{this.props.user.displayName}</small>
+              <img src={this.props.user.icon} className='user-profile chat-user-icon' />
+              <small>{this.props.user.name}</small>
               <small>{this.props.time}</small>
             </div>
           </li>

@@ -15,6 +15,7 @@ function requireAuth (nextState, replace) {
       pathname: '/',
       state: { nextPathname: nextState.location.pathname }
     })
+    console.log('Quicker not authed')
   }
 }
 
@@ -23,7 +24,7 @@ render((
     <Route path='/' component={App}>
       <IndexRoute component={Landing} />
       <Route path='home' component={Home} onEnter={requireAuth}>
-        <Route path=':chatRoomKey' components={{ content: Chat }} />
+        <Route path=':groupUrl' components={{ content: Chat }} />
       </Route>
     </Route>
   </Router>

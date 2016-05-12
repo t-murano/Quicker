@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import Rebase from 're-base'
 
-const base = Rebase.createClass('https://taube.firebaseio.com')
+import user from './config/user'
+
+const base = Rebase.createClass('https://quicker-dev.firebaseio.com')
 
 export default class ChatKill extends Component {
   constructor (props, context) {
@@ -20,7 +22,8 @@ export default class ChatKill extends Component {
        // This 'then' method will run after the post has finished.
       then: () => {
         console.log('DEL SUCCESS')
-        this.context.router.replace('/home')
+        user.leaveGroupMessages()
+        this.context.router.push('/home')
       }
     })
   }
