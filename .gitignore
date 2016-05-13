@@ -4,4 +4,5 @@ node_modules
 memo.md
 src/modules/Logo.js
 src/modules/utils/auth.js
+src/modules/efx/Typing.js
 npm-debug.log
