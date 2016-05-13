@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Icon} from 'react-fa'
 
 export default class HomeContent extends Component {
   constructor (props) {
@@ -6,11 +7,19 @@ export default class HomeContent extends Component {
   }
   render () {
     return (
-      <div>
-        <img className='user-profile' src={this.props.user.icon} />
-        <h2>Welcome, {this.props.user.name}!</h2>
-        <h4>If you loggedIn, first view this screen.</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div className='home'>
+        <h1>Quicker</h1>
+        <h4>クイッカーは気軽に参加できるグループトークです。</h4>
+        <p>クイッカーは簡単にトークができるアプリです。フェイスブックやツイッターのアカウントさえあれば誰でもすぐグループトークに参加ができます。なお、サーバーからは24時間後自動的に会話の情報が消去されます。</p>
+        <p className='color-change'>さあ、まずは左側の「新規グループトーク」ボタンを押して初めてください。</p>
+        <div>
+          <button>
+            <Icon size='2x' name='hand-o-left' />
+          </button>
+          <button>
+            <Icon size='2x' name='hand-scissors-o' />
+          </button>
+        </div>
       </div>
     )
   }

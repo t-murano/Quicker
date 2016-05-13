@@ -33,11 +33,11 @@ export default class ChatForm extends Component {
 
   render () {
     return (
-      <div className='comment-form'>
+      <div className='msg-form'>
         <input
           type='text'
           autoFocus='true'
-          placeholder='message here'
+          placeholder='メッセージを入力する'
           onChange={this._handleChange.bind(this)}
           value={this.state.msg}
           onKeyPress= {this._handleKeyPress.bind(this)}

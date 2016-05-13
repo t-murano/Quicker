@@ -1,0 +1,401 @@
+
+//::::::::::::::::::::::::::::::::::
+// { Quicker Style file }
+// author: Jinma Yamashita <jinmayamashita@gmail.com>
+//
+//::::::::::::::::::::::::::::::::::
+// NOTE:
+// http://ios7colors.com/
+// #737373
+//::::::::::::::::::::::::::::::::::
+
+//::::::::::::::::::::::::::::::::::
+// { imports }
+//::::::::::::::::::::::::::::::::::
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:700)
+@import config/reset
+@import util/gridlex
+@import util/flexitems
+@import util/lang
+@import layout/layout
+@import util/util
+
+//::::::::::::::::::::::::::::::::::
+// { variables }
+//::::::::::::::::::::::::::::::::::
+$text-color: #526475
+$btn-text-color: #000
+$btn-border-color: #c0deed
+
+$twitter-logo: #00aced
+$facebook-logo: #3b5998
+$github-logo: #000
+$chat-list-color: #f1f5fa
+$home-text-color: #2e2e2e
+$header-nav-bottom: .6rem
+
+$break-mobile: 568px
+$break-tablet: 768px
+
+$logout-btn-color: lighten($text-color, 30%)
+
+//::::::::::::::::::::::::::::::::::
+// { globals }
+//::::::::::::::::::::::::::::::::::
+a
+  color: #0e58f5
+
+code
+  font-size: 12px
+
+button
+  color: $btn-text-color
+  font-family: "Hiragino Sans"
+  font-weight: 200
+  background: #fff
+  border-radius: 5px
+  border: 1px solid $btn-border-color
+  display: inline-block
+
+body
+  font-family: sans-serif
+  color: $text-color
+
+//::::::::::::::::::::::::::::::::::
+// { header }
+//::::::::::::::::::::::::::::::::::
+header
+  .nav
+    z-index: 1
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    height: 3.5em
+    background: #fff
+    padding-top: $header-nav-bottom
+    padding-bottom: $header-nav-bottom
+    box-shadow: 0 0 2px rgba(0,0,0,.5)
+  .header-logo
+    height: 50px
+    width: auto
+
+.nav-btn
+  width: 90%
+  color: #fff
+  border: 1px solid #eee
+  &:hover
+    & .login-icon,.logout-text
+      color: #eee
+  .login-icon
+    padding-right: 0
+    color: $logout-btn-color
+
+  // logout btn
+  .logout-text
+    font-weight: 500
+    color: $logout-btn-color
+
+//::::::::::::::::::::::::::::::::::
+// { login page }
+//::::::::::::::::::::::::::::::::::
+.landing-page
+  text-align: center
+
+.login-icon
+  padding-right: 1.2rem
+
+.login-btn
+  cursor: pointer
+  font-size: 16px
+  height: 50px
+  line-height: 50px
+  margin: .2rem
+  transition: background .6s ease-in-out
+  &:hover
+    background: #333
+    color: #fff
+    border: 1px solid #eee
+    & .fa-twitter, .fa-facebook-official, .fa-github
+      color: #fff
+
+.fa-twitter
+  color: $twitter-logo
+.fa-facebook-official
+  color: $facebook-logo
+.fa-github
+  color: $github-logo
+
+.desc
+  color: $text-color
+  font-size: 2rem
+  margin-bottom: 4rem
+  font-family: "TsukuARdGothic-Regular"
+
+//::::::::::::::::::::::::::::::::::
+// { side }
+//::::::::::::::::::::::::::::::::::
+.side
+  button
+    color: $logout-btn-color
+    width: 90%
+    cursor: pointer
+    font-size: 16px
+    font-weight: 300
+    height: 50px
+    line-height: 50px
+    margin: .2rem
+    transition: background 0.3s ease-in-out
+    &:hover
+      background: rgba(0, 0, 0, 0.1)
+      color: skyblue
+  ul
+    list-style: none
+    text-align: center
+    li
+      letter-spacing: 2px
+
+.sideClosed
+  // opacity: 0
+  // height: 0vh
+
+  // -webkit-transition: height 1.5s
+  // -moz-transition: height 1.5s
+  // -ms-transition: height 1.5s
+  // -o-transition: height 1.5s
+  // transition: height 1.5s
+
+.sideOpend
+  // opacity: 1
+  // height: 100vh
+
+  // animation: showthis 1.6s ease
+  // -webkit-transition: height 1.5s
+  // -moz-transition: height 1.5s
+  // -ms-transition: height 1.5s
+  // -o-transition: height 1.5s
+  // transition: height 1.5s
+
+.side-bar
+  /*display: none;*/
+  /*height: 0vh;*/
+  /*display: flex;*/
+
+//::::::::::::::::::::::::::::::::::
+// { main }
+//::::::::::::::::::::::::::::::::::
+.main
+  background: $chat-list-color
+  margin-top: 3rem
+  border-bottom-left-radius: 1.6em
+  @media only screen and (max-width: $break-tablet)
+    border-bottom-left-radius: 2.8em
+    border-bottom-right-radius: 2.8em
+  @media only screen and (max-width: $break-mobile)
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+
+// chat
+.chat-list
+  background: $chat-list-color
+  font-family: "TsukuARdGothic-Regular", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif
+  font-weight: 100
+  overflow: auto
+  margin: 0
+  padding: 2rem
+  height: 292px
+
+  // chat msg
+  .msg
+    position: relative
+    // border: 1px solid #eee
+    border-radius: 18px
+    background-color: #fff
+    padding: .9rem
+    font-size: 1.2rem
+    line-height: 3rem
+    color: #333
+    max-width: 780px
+    :after, :before
+      left: 90%
+      top: 100%
+      right: 50%
+      border: solid transparent
+      content: " "
+      height: 0
+      width: 0
+      position: absolute
+      pointer-events: none
+    :after
+      border-left-color: #fff
+      border-width: 10px
+      margin-top: -10px
+    :before
+      border-top-color: #fff
+      border-width: 10px
+      margin-left: -10px
+      p
+        word-break: break-all
+
+  .chat-user-icon
+    width: 30px
+    height: 30px
+    border: 1px solid #eee
+  .time
+    font-size: 12px
+    display: box
+    color: $logout-btn-color
+
+
+  .chat-user
+    margin-top: 1.2rem
+    display: flex
+    padding-right: 5.8rem
+    @media only screen and (max-width: 1210px)
+      padding-right: 0.8rem
+    @media only screen and (max-width: $break-tablet)
+      padding-right: 0.8rem
+    @media only screen and (max-width: $break-mobile)
+      padding-right: 0.8rem
+
+    flex-direction: row
+    justify-content: flex-end
+    .msg-info
+      align-items: baseline
+      display: flex
+      flex-direction: column
+      font-size: .8rem
+      padding-left: .3rem
+
+    small
+      padding-top: 3px
+
+  li
+    margin-bottom: 2.2rem
+
+// input
+.msg-form
+  margin: 3%
+  width: 90%
+  height: 3rem
+  input
+    padding-left: .5rem
+    height: 100%
+    width: 100%
+    font-family: "TsukuARdGothic-Regular", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif
+    font-weight: 100
+    font-size: 1.2rem
+  border: 1px solid #eee
+
+
+//::::::::::::::::::::::::::::::::::
+// { home }
+//::::::::::::::::::::::::::::::::::
+.home
+  margin-top: 8rem
+  padding: .8rem
+  h1
+    font-size: 4.35294rem
+    margin-bottom: .35881rem
+    padding-top: .64119rem
+    line-height: 5rem
+    color: $home-text-color
+    font-family: 'Oswald', sans-serif
+  h4
+    margin-bottom: 2.25881rem
+    font-family: "TsukuARdGothic-Regular"
+  p
+    margin-bottom: 1.18234rem
+    padding-top: .61766rem
+    line-height: 2rem
+    font-family: "TsukuARdGothic-Regular"
+  button
+    color: $logout-btn-color
+    width: 20%
+    cursor: pointer
+    font-size: 15px
+    font-weight: 300
+    height: 50px
+    // line-height: 50px
+    // margin: .2rem
+
+//::::::::::::::::::::::::::::::::::
+// { popup }
+//::::::::::::::::::::::::::::::::::
+.popup
+  padding: 4rem
+  .pop-items
+    label
+      color: #7b8994
+      // position: absolute
+      // top: 60
+      // bottom: 0
+      // left: 0
+      // transition: 0.2s
+      width: 100%
+      font-weight: 100
+      line-height: 3rem
+    input
+      padding-top: 1rem
+      padding: .8rem
+      height: 30px
+      width: 100%
+      font-family: menlo, monospace, sans-serif
+      font-size: 2.4rem
+      margin-bottom: 1rem
+      // border: 1px solid #eee
+
+.user-profile
+  font-size: .8rem
+  display: flex
+  flex-direction: row
+  justify-content: center
+
+  img
+    border: 1px solid $btn-border-color
+    width: 100px
+    height: 100px
+    margin-bottom: 2.2rem
+  .user-profile-meta
+    margin-bottom: 3rem
+    padding-left: 1.5rem
+    display: flex
+    flex-direction: column
+    text-align: right
+    .login-icon
+      padding-right: .5rem
+    .login-icon-name
+      font-size: .5rem
+    button
+      max-width: 100%
+      margin-top: .8rem
+      padding: .2rem
+      height: 30px
+      line-height: .3rem
+      // text-align: center
+
+//::::::::::::::::::::::::::::::::::
+// { responsive utilities }
+//::::::::::::::::::::::::::::::::::
+.mobile-hide
+  display: block
+  @media only screen and (max-width: $break-mobile)
+    display: none
+
+.tablet-hide
+  display: block
+  @media only screen and (max-width: $break-tablet)
+    display: none
+
+.tablet-hide-inline
+  display: inline
+  @media only screen and (max-width: $break-tablet)
+    display: none
+
+.load
+  margin-bottom: 1000px
+  font-size: 4rem
+  display: flex
+  background: gold
+  justify-content: center

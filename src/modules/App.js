@@ -3,6 +3,7 @@ import Rebase from 're-base'
 
 import auth from './config/auth'
 import user from './config/user'
+import Footer from './layout/Footer'
 
 const base = Rebase.createClass('https://quicker-dev.firebaseio.com')
 
@@ -78,13 +79,16 @@ export default class App extends Component {
     return (
       <div>
         <span style={debugState} onClick={this._debState.bind(this)}>*</span>
-        { this.props.children &&
-          React.cloneElement(this.props.children, {
-            chats: this.state.messages,
-            user: this.state.user
-            // getRoom: this.state.currentRoom
-          })
-        }
+        <main>
+          { this.props.children &&
+            React.cloneElement(this.props.children, {
+              chats: this.state.messages,
+              user: this.state.user
+              // getRoom: this.state.currentRoom
+            })
+          }
+        </main>
+        <Footer />
       </div>
     )
   }
