@@ -16,10 +16,8 @@ export default class Typing extends Component {
   render () {
     return (
       <div>
-        <div className='grid-3-center'>
-          <code className='col-9'>Copyright © 2016 <a href='https://github.com/jinmayamashita'>Jinma Yamashita</a>. All rights reserved · Code licensed under MIT License</code>
-          {/*GitHub Project · Issues*/}
-          <div className='col-9'>
+        <div className='grid-3-center footer'>
+          <div className=''>
             <a className='github-button'
                href='https://github.com/jinmayamashita/quicker'
                data-icon='octicon-star'
@@ -52,6 +50,12 @@ export default class Typing extends Component {
                Follow @quickermessage
             </a>
           </div>
+        </div>
+        <div className='grid-3-center'>
+          <code className=''>
+            Copyright © 2016 <a href='https://github.com/jinmayamashita'>Jinma Yamashita</a>. All rights reserved · Code licensed under MIT License
+          </code>
+          {/*GitHub Project · Issues*/}
         </div>
       </div>
     )

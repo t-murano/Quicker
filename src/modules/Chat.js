@@ -17,9 +17,7 @@ export default class Chat extends Component {
       roomName: ''
     }
   }
-
   componentDidMount () {
-
     let roomKey = this.props.params.groupUrl
     console.log('ROOMKEY', roomKey)
 
@@ -54,7 +52,6 @@ export default class Chat extends Component {
 		// @FIXME params -> if params, roomKey not eq then ?
     return (
       <div>
-			<h1>ChatRoomName</h1>
 				<ChatKill roomKey={this.props.params.groupUrl}/>
         <ChatList messages={this.state.chats} />
         <ChatForm onCommentSubmit={this._handleMessageSubmit.bind(this)} />

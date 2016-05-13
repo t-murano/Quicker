@@ -69,22 +69,34 @@ export default class ChatNew extends Component {
   render () {
     return (
       <div>
-        <button className='create' onClick={() => this.refs.simpleDialog.show()}>createNewChat</button>
+        <button className='create' onClick={() => this.refs.simpleDialog.show()}>
+          新規グループトーク
+        </button>
         <SkyLight
           ref='simpleDialog'
           afterClose={this._executeAfterModalClose.bind(this)}
-          title='CREATE CHATROOM'>
-            <label htmlFor='chatGroupName'>name</label>
-            <input name='name' onChange={this._handleChange.bind(this)} id='chatGroupName' type='text' placeholder='blankRoom' autoFocus />
-            <label htmlFor='chatGroupPass'>roomKey</label>
-            <input id='chatGroupPass' type='text' value={this.state.token} disabled />
-            <label htmlFor='chatTime'>chatTime </label>
-            <select name='time' defaultValue={this.state.time} onChange={this._handleChange.bind(this)} id='chatTime'>
-              <option value='30'>30min</option>
-              <option value='60'>1hr</option>
-              <option value='120'>2hr</option>
-            </select>
-            <button onClick={this._handleSubmit.bind(this)}>CREATE</button>
+          title='新規グループトーク'>
+          <div className='popup'>
+            <div className='hide'>
+              <label htmlFor='chatGroupName'>name</label>
+              <input name='name' onChange={this._handleChange.bind(this)} id='chatGroupName' type='text' placeholder='blankRoom' autoFocus />
+            </div>
+            <div className='pop-items'>
+              <label htmlFor='chatGroupPass'>下記のグループパスワードで参加ができます。</label>
+              <input id='chatGroupPass' type='text' value={this.state.token} disabled />
+            </div>
+            <div className='hide'>
+              <label htmlFor='chatTime'>chatTime </label>
+              <select name='time' defaultValue={this.state.time} onChange={this._handleChange.bind(this)} id='chatTime'>
+                <option value='30'>30min</option>
+                <option value='60'>1hr</option>
+                <option value='120'>2hr</option>
+              </select>
+            </div>
+            <button onClick={this._handleSubmit.bind(this)}>
+              グループトークを開始
+            </button>
+          </div>
         </SkyLight>
       </div>
     )

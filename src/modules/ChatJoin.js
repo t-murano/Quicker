@@ -29,14 +29,22 @@ export default class ChatJoin extends Component {
   render () {
     return (
       <div>
-        <button className='join' onClick={() => this.refs.simpleDialog.show()}>joinChat</button>
+        <button className='join' onClick={() => this.refs.simpleDialog.show()}>
+          グループトークに参加
+        </button>
         <SkyLight
           ref='simpleDialog'
           afterClose={this._executeAfterModalClose.bind(this)}
-          title='JOIN CHATROOM'>
-            <label htmlFor='chatGroupPass'>roomKey?</label>
-            <input onChange={this._handleChange.bind(this)} id='chatGroupPass' type='text' placeholder='roomKey?' autoFocus />
-            <button onClick={this._handleSubmit.bind(this)}>JOIN</button>
+          title='グループトークに参加'>
+          <div className='popup'>
+            <div className='pop-items'>
+              <label htmlFor='chatGroupPass'>参加したいグループパスワードを入力してください。</label>
+              <input onChange={this._handleChange.bind(this)} id='chatGroupPass' type='text' placeholder='' autoFocus />
+            </div>
+            <button onClick={this._handleSubmit.bind(this)}>
+              グループトークに参加
+            </button>
+          </div>
         </SkyLight>
       </div>
     )

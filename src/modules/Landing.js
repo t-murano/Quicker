@@ -12,7 +12,7 @@ export default class Landing extends Component {
                 <img src='assets/img/logo.jpg' />
                   <code>クイッカー</code>
                   <h2 className='jpn desc'>
-                    気軽に参加できるグループメッセンジャー
+                    気軽に参加できるグループトーク
                   </h2>
               </div>
               <Login />
